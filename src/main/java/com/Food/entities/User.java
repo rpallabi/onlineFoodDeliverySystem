@@ -115,6 +115,6 @@ public class User {
 				+ ", phoneNumber=" + phoneNumber + ", address=" + address + ", userType=" + userType + "]";
 	}
 	
-	// Hiii
+	
 
 }
