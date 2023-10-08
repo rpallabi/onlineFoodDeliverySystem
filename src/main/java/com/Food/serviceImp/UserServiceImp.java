@@ -24,18 +24,18 @@ public class UserServiceImp implements UserService{
 	}
 	
 	@Override
-	public List<User>getAllUser() {               //Retrieves a list of all employee entities from the database
+	public List<User>getAllUser() {               
 		List<User> le=us.findAll();
 		return le;
 	}
 	@Override
-	public User getUserById(int id) {             //Retrieves a specific employee entity by its ID from the database
+	public User getUserById(int id) {            
 		User s=us.findById(id).get();
 		return s;
 	}
 
 	@Override
-	public User updateUser(int id,User user) {       //update Retrieves the existing employee by ID using
+	public User updateUser(int id,User user) {       
 		User s=us.findById(id).get();
 		s.setUserName(user.getUserName());
 		s.setEmail(user.getEmail());
@@ -49,16 +49,15 @@ public class UserServiceImp implements UserService{
 	}
 
 	@Override
-	public String deleteUserById(int id) {                     //Deletes a specific employee entity by its ID 
+	public String deleteUserById(int id) {                      
 		us.deleteById(id);
 		return "User is deleted";
 	}
 
 	@Override
-	public String deleteUsers() {                                //Deletes all employee entities from the database
+	public String deleteUsers() {                              
 		us.deleteAll();
 		return "All the Users are deleted";
 	}
-
 
 }

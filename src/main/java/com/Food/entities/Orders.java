@@ -1,6 +1,7 @@
 
 package com.Food.entities;
 
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -26,23 +27,58 @@ public class Orders {
     @Column(name = "Total_Price")
      int totalPrice;
 
-    @Column(name = "Total_Quantity")
+    public Delivery getDelivery() {
+		return delivery;
+	}
+
+	public void setDelivery(Delivery delivery) {
+		this.delivery = delivery;
+	}
+
+	@Column(name = "Total_Quantity")
      int totalQuantity;
     
     @ManyToOne
     @JoinColumn(name="U_id")
     public User user;
     
-    @OneToOne(fetch = FetchType.LAZY)
+    
+    
+    public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public OrderItems getOrderItems() {
+		return orderItems;
+	}
+
+	public void setOrderItems(OrderItems orderItems) {
+		this.orderItems = orderItems;
+	}
+
+	@OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "OI_id")
     public OrderItems orderItems;
     
+   
     @OneToOne(mappedBy = "orders", cascade = CascadeType.ALL)
     public Payment payment;
-    
+   
     @OneToOne(mappedBy = "orders", cascade = CascadeType.ALL)
     public Delivery delivery;
     
+	public Payment getPayment() {
+		return payment;
+	}
+
+	public void setPayment(Payment payment) {
+		this.payment = payment;
+	}
+
 	public int getOrderId() {
 		return orderId;
 	}

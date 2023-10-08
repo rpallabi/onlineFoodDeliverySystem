@@ -1,6 +1,7 @@
 package com.Food.entities;
 
-import java.time.LocalDateTime;
+import java.sql.Date;
+
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -21,8 +22,8 @@ public class Delivery {
     @Column(name = "D_id")
      int deliveryid;
 	
-	@Column(name = "Deliver_Time", nullable = false)
-    LocalDateTime deliverTime;
+	@Column(name = "Deliver_Date", nullable = false)
+	Date deliverydate;
    
    
    
@@ -38,6 +39,10 @@ public class Delivery {
    @OneToOne(fetch = FetchType.LAZY)
    @JoinColumn(name = "O_id")
    public Orders orders;
+   
+   @OneToOne(fetch = FetchType.LAZY)
+   @JoinColumn(name = "U_id")
+   public User user;
 	
 	public int getDeliveryid() {
 		return deliveryid;
@@ -47,14 +52,7 @@ public class Delivery {
 		this.deliveryid = deliveryid;
 	}
 
-	public LocalDateTime getDeliverTime() {
-		return deliverTime;
-	}
-
-	public void setDeliverTime(LocalDateTime deliverTime) {
-		this.deliverTime = deliverTime;
-	}
-
+	
 	public String getPaymentMode() {
 		return paymentMode;
 	}
@@ -77,6 +75,32 @@ public class Delivery {
 
 	public void setNumberOfItems(int numberOfItems) {
 		this.numberOfItems = numberOfItems;
+	}
+
+	
+
+	public Date getDeliverydate() {
+		return deliverydate;
+	}
+
+	public void setDeliverydate(Date deliverydate) {
+		this.deliverydate = deliverydate;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Orders getOrders() {
+		return orders;
+	}
+
+	public void setOrders(Orders orders) {
+		this.orders = orders;
 	}
 
 	

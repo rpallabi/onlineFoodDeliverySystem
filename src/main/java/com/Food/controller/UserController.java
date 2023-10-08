@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.Food.entities.TableBooking;
+//import com.Food.entities.TableBooking;
 import com.Food.entities.User;                                  
-import com.Food.service.TableBookingService;
+//import com.Food.service.TableBookingService;
 import com.Food.service.UserService;
 
 
@@ -64,28 +64,7 @@ public class UserController {
 	{		
 		return ss.deleteUsers();                         
 	}
-	@Autowired
-	TableBookingService bk;                                               
 	
-	@PostMapping("/createBooking")                                       
-	ResponseEntity<TableBooking> createBooking(@RequestBody TableBooking tablebooking)
-	{	
-		return new ResponseEntity<TableBooking>(bk.createBooking( tablebooking),HttpStatus.CREATED);
-	}
-	
-	
-	
-	@GetMapping("/getAllBooking")                                    
-	List<TableBooking> getAllBooking()
-	{		
-		return bk.getAllBooking();
-	}
-	
-	@GetMapping("/getBookingById/{id}")                             
-	TableBooking getBookingById(@PathVariable int bookingId)
-	{		
-		return bk.getBookingById(bookingId);
-	}
 	
 	
 

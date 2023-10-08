@@ -13,7 +13,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
-
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
@@ -34,18 +33,7 @@ public class OrderItems {
 
     @Column(name = "Price")
      int price;
-    
-    
-    //@OneToOne(fetch = FetchType.LAZY)
-    //@JoinColumn(name = "F_id")
-    //public Food food;
-    
-    //@ManyToOne
-    //@JoinColumn(name = "order_id")
-    //public Order order;
-    
-    //@ManyToOne(optional= "orderItems", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    //public Order order;
+   
     
     @ManyToMany
     @JoinTable(
@@ -55,8 +43,25 @@ public class OrderItems {
     )
     public Set<Food> food = new HashSet<>();
     
-    @OneToOne(mappedBy = "orderItems", cascade = CascadeType.ALL)
+    
+    public Orders getOrders() {
+		return orders;
+	}
+
+	public void setOrders(Orders orders) {
+		this.orders = orders;
+	}
+
+	@OneToOne(mappedBy = "orderItems", cascade = CascadeType.ALL)
     public Orders orders;
+
+	public Set<Food> getFood() {
+		return food;
+	}
+
+	public void setFood(Set<Food> food) {
+		this.food = food;
+	}
 
 	public int getOrderItemId() {
 		return orderItemId;

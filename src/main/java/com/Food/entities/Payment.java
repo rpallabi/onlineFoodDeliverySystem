@@ -1,6 +1,7 @@
 package com.Food.entities;
 
-import java.security.Timestamp;
+
+import java.sql.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -20,13 +21,13 @@ public class Payment {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "P_id")
-     int id;
+     int pid;
     
     @Column(name = "Amount", nullable = false)
      int amount;
     
-    @Column(name = "Payment_date", nullable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-     Timestamp paymentDate;
+    @Column(name = "Payment_date")
+    Date paymentDate;
     
     @Column(name = "Pay_method", nullable = false, length = 50)
     String paymentMethod;
@@ -39,13 +40,7 @@ public class Payment {
     @JoinColumn(name = "O_id")
     public Orders orders;
     
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
+	
 
 	public int getAmount() {
 		return amount;
@@ -55,20 +50,47 @@ public class Payment {
 		this.amount = amount;
 	}
 
-	public Timestamp getPaymentDate() {
-		return paymentDate;
-	}
-
-	public void setPaymentDate(Timestamp paymentDate) {
-		this.paymentDate = paymentDate;
-	}
-
+	
 	public String getPaymentMethod() {
 		return paymentMethod;
 	}
 
 	public void setPaymentMethod(String paymentMethod) {
 		this.paymentMethod = paymentMethod;
+	}
+
+	
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Orders getOrders() {
+		return orders;
+	}
+
+	public void setOrders(Orders orders) {
+		this.orders = orders;
+	}
+
+	public int getPid() {
+		return pid;
+	}
+
+	public void setPid(int pid) {
+		this.pid = pid;
+	}
+
+	public Date getPaymentDate() {
+		return paymentDate;
+	}
+
+	public void setPaymentDate(Date paymentDate) {
+		this.paymentDate = paymentDate;
 	}
 
 	

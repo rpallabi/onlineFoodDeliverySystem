@@ -6,9 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.Food.entities.TableBooking;
-import com.Food.entities.User;
 import com.Food.repository.TableBookingRepository;
-
 import com.Food.service.TableBookingService;
 
 @Service

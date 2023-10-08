@@ -4,6 +4,13 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
+//import java.util.HashSet;
+//import java.util.List;
+//import java.util.Set;
+
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -16,6 +23,11 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 
+//import jakarta.persistence.JoinColumn;
+//import jakarta.persistence.ManyToMany;
+//import jakarta.persistence.ManyToOne;
+//import jakarta.persistence.OneToMany;
+
 import jakarta.persistence.Table;
 
 @Entity
@@ -25,59 +37,55 @@ public class Food {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "F_id")
-     int id;
-
-    @Column(name = "F_name", nullable = false, length = 50)
-     String name;
+    private int fid;
+	@Column(name = "F_name", nullable = false, length = 50)
+    private String foodname;
 
     @Column(name = "F_type", nullable = false, length = 50)
-     String type;
+    private String type;
 
     @Column(name = "F_description", columnDefinition = "TEXT")
-     String description;
+    private String description;
 
     @Column(name = "F_price", nullable = false)
-     int price;
+    private int price;
 
     @Column(name = "F_Quantity", nullable = false)
-     Integer quantity;
-
-    @Column(name = "Image", length = 255)
-     String image;
+   private  Integer quantity;
+    
+	@Column(name = "Image")
+    private String profileImage;
     
     @ManyToOne
     @JoinColumn(name="Admin_id")
-    public User user;
-   
-    @OneToMany(mappedBy="food")
-	List<Review> reviews;
-   
-    //@OneToOne(mappedBy="food")
-   	//List<OrderItems> orderItems;
+    @JsonIgnore
+    public User admin;
+    
+    @OneToMany(mappedBy="foods")
+    List<Review> reviews;
+    
     
     @ManyToMany(mappedBy = "food")
     public Set<OrderItems> orderItems = new HashSet<>();
     
     
-    //@OneToOne(mappedBy = "food", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    //public OrderItems orderItems;
-
-	public int getId() {
-		return id;
+	public int getFid() {
+		return fid;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setFid(int fid) {
+		this.fid = fid;
 	}
 
-	public String getName() {
-		return name;
+	public String getFoodname() {
+		return foodname;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	
+	public void setFoodname(String foodname) {
+		this.foodname = foodname;
 	}
-
+	
 	public String getType() {
 		return type;
 	}
@@ -110,20 +118,40 @@ public class Food {
 		this.quantity = quantity;
 	}
 
-	public String getImage() {
-		return image;
+	public String getProfileImage() {
+		return profileImage;
 	}
 
-	public void setImage(String image) {
-		this.image = image;
+	public void setProfileImage(String profileImage) {
+		this.profileImage = profileImage;
 	}
 
-	public User getUser() {
-		return user;
+	
+	public User getAdmin() {
+		return admin;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setAdmin(User admin) {
+		this.admin = admin;
 	}
+
+	public List<Review> getReviews() {
+		return reviews;
+	}
+
+	public void setReviews(List<Review> reviews) {
+		this.reviews = reviews;
+	}
+
+	public Set<OrderItems> getOrderItems() {
+		return orderItems;
+	}
+
+	public void setOrderItems(Set<OrderItems> orderItems) {
+		this.orderItems = orderItems;
+	}
+
+	
+	
 
 }

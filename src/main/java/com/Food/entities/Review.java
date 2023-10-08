@@ -1,5 +1,6 @@
 package com.Food.entities;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -7,22 +8,34 @@ import jakarta.persistence.ManyToOne;
 @Entity
 public class Review {
 	@Id
-	int no_of_rating;
-	int total_rating;
+	@Column(name = "No_Of_Rating")
+	int ratingNo;
+	@Column(name = "Total_Rating")
+	int totalrating;
+	
 	@ManyToOne
     @JoinColumn(name="F_id")
-    public Food food;
-	public int getNo_of_rating() {
-		return no_of_rating;
+	
+    public Food foods;
+	
+	public int getRatingNo() {
+		return ratingNo;
 	}
-	public void setNo_of_rating(int no_of_rating) {
-		this.no_of_rating = no_of_rating;
+	public void setRatingNo(int ratingNo) {
+		this.ratingNo = ratingNo;
 	}
-	public int getTotal_rating() {
-		return total_rating;
+	public int getTotalrating() {
+		return totalrating;
 	}
-	public void setTotal_rating(int total_rating) {
-		this.total_rating = total_rating;
+	public void setTotalrating(int totalrating) {
+		this.totalrating = totalrating;
 	}
+	public Food getFoods() {
+		return foods;
+	}
+	public void setFoods(Food foods) {
+		this.foods = foods;
+	}
+	
 	
 }
