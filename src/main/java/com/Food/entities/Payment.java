@@ -1,7 +1,8 @@
 package com.Food.entities;
 
-
 import java.sql.Date;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -17,30 +18,29 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "Payment")
 public class Payment {
-	
+
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "P_id")
-     int pid;
-    
-    @Column(name = "Amount", nullable = false)
-     int amount;
-    
-    @Column(name = "Payment_date")
-    Date paymentDate;
-    
-    @Column(name = "Pay_method", nullable = false, length = 50)
-    String paymentMethod;
-    
-    @ManyToOne
-    @JoinColumn(name="U_id")
-    public User user;
-    
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "O_id")
-    public Orders orders;
-    
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "P_id")
+	int pid;
+
+	@Column(name = "Amount", nullable = false)
+	int amount;
+
+	@Column(name = "Payment_date")
+	Date paymentDate;
+
+	@Column(name = "Pay_method", nullable = false, length = 50)
+	String paymentMethod;
+	@JsonIgnore
+	@ManyToOne
+	@JoinColumn(name = "U_id")
+	public User user;
 	
+	@JsonIgnore
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "O_id")
+	public Orders orders;
 
 	public int getAmount() {
 		return amount;
@@ -50,7 +50,6 @@ public class Payment {
 		this.amount = amount;
 	}
 
-	
 	public String getPaymentMethod() {
 		return paymentMethod;
 	}
@@ -58,8 +57,6 @@ public class Payment {
 	public void setPaymentMethod(String paymentMethod) {
 		this.paymentMethod = paymentMethod;
 	}
-
-	
 
 	public User getUser() {
 		return user;
@@ -93,6 +90,4 @@ public class Payment {
 		this.paymentDate = paymentDate;
 	}
 
-	
-    
 }

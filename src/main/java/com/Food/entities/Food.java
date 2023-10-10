@@ -1,16 +1,12 @@
 package com.Food.entities;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import java.util.HashSet;
 
-//import java.util.HashSet;
-//import java.util.List;
-//import java.util.Set;
-
+import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -21,6 +17,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+//import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToMany;
 
 //import jakarta.persistence.JoinColumn;
@@ -33,42 +30,42 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "Food")
 public class Food {
-	
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "F_id")
-    private int fid;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "F_id")
+	private int fid;
 	@Column(name = "F_name", nullable = false, length = 50)
-    private String foodname;
+	private String foodname;
 
-    @Column(name = "F_type", nullable = false, length = 50)
-    private String type;
+	@Column(name = "F_type", nullable = false, length = 50)
+	private String type;
 
-    @Column(name = "F_description", columnDefinition = "TEXT")
-    private String description;
+	@Column(name = "F_description", columnDefinition = "TEXT")
+	private String description;
 
-    @Column(name = "F_price", nullable = false)
-    private int price;
+	@Column(name = "F_price", nullable = false)
+	private int price;
 
-    @Column(name = "F_Quantity", nullable = false)
-   private  Integer quantity;
-    
+	@Column(name = "F_Quantity", nullable = false)
+	private Integer quantity;
+
 	@Column(name = "Image")
-    private String profileImage;
-    
-    @ManyToOne
-    @JoinColumn(name="Admin_id")
-    @JsonIgnore
-    public User admin;
-    
-    @OneToMany(mappedBy="foods")
-    List<Review> reviews;
-    
-    
-    @ManyToMany(mappedBy = "food")
-    public Set<OrderItems> orderItems = new HashSet<>();
-    
-    
+	private String profileImage;
+	
+	@JsonIgnore
+	@ManyToOne
+	@JoinColumn(name = "Admin_id")
+	public User admin;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "foods")
+	List<Review> reviews;
+	
+	@JsonIgnore
+	@ManyToMany(mappedBy = "food")
+	public Set<OrderItems> orderItems = new HashSet<>();
+
 	public int getFid() {
 		return fid;
 	}
@@ -81,11 +78,10 @@ public class Food {
 		return foodname;
 	}
 
-	
 	public void setFoodname(String foodname) {
 		this.foodname = foodname;
 	}
-	
+
 	public String getType() {
 		return type;
 	}
@@ -126,7 +122,6 @@ public class Food {
 		this.profileImage = profileImage;
 	}
 
-	
 	public User getAdmin() {
 		return admin;
 	}
@@ -150,8 +145,5 @@ public class Food {
 	public void setOrderItems(Set<OrderItems> orderItems) {
 		this.orderItems = orderItems;
 	}
-
-	
-	
 
 }

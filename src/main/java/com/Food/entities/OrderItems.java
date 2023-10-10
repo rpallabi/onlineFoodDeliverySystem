@@ -3,6 +3,8 @@ package com.Food.entities;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -14,46 +16,47 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+//import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "OrderItems")
 public class OrderItems {
-	
+
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "OI_id")
-     int orderItemId;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "OI_id")
+	int orderItemId;
 
-    @Column(name = "F_name")
-     String foodName;
+	@Column(name = "F_name")
+	String foodName;
 
-    @Column(name = "Quantity")
-     int quantity;
+	@Column(name = "Quantity")
+	int quantity;
 
-    @Column(name = "Price")
-     int price;
-   
-    
-    @ManyToMany
-    @JoinTable(
-        name = "order_item_food",
-        joinColumns = @JoinColumn(name = "OI_id"),
-        inverseJoinColumns = @JoinColumn(name = "F_id")
-    )
-    public Set<Food> food = new HashSet<>();
-    
-    
-    public Orders getOrders() {
+	@Column(name = "Price")
+	int price;
+     
+	@JsonIgnore
+	@ManyToMany
+	@JoinTable(name = "order_item_food", 
+	joinColumns = @JoinColumn(name = "OI_id"), 
+	inverseJoinColumns = @JoinColumn(name = "F_id"))
+	public Set<Food> food = new HashSet<>();
+	
+	@JsonIgnore
+	@OneToOne(mappedBy = "orderItems", cascade = CascadeType.ALL)
+	public Orders orders;
+
+	public Orders getOrders() {
 		return orders;
 	}
 
 	public void setOrders(Orders orders) {
 		this.orders = orders;
 	}
-
-	@OneToOne(mappedBy = "orderItems", cascade = CascadeType.ALL)
-    public Orders orders;
+	
+	
 
 	public Set<Food> getFood() {
 		return food;

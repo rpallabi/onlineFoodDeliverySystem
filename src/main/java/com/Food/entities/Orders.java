@@ -1,6 +1,7 @@
 
 package com.Food.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -18,16 +19,36 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "Orders")
 public class Orders {
-	
+
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "O_id")
-     int orderId;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "O_id")
+	int orderId;
 
-    @Column(name = "Total_Price")
-     int totalPrice;
+	@Column(name = "Total_Price")
+	int totalPrice;
+	@Column(name = "Total_Quantity")
+	int totalQuantity;
+    
+	@JsonIgnore
+	@ManyToOne
+	@JoinColumn(name = "U_id")
+	public User user;
+	
+	@JsonIgnore
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "OI_id")
+	public OrderItems orderItems;
 
-    public Delivery getDelivery() {
+	@JsonIgnore
+	@OneToOne(mappedBy = "orders", cascade = CascadeType.ALL)
+	public Payment payment;
+
+	@JsonIgnore
+	@OneToOne(mappedBy = "orders", cascade = CascadeType.ALL)
+	public Delivery delivery;
+
+	public Delivery getDelivery() {
 		return delivery;
 	}
 
@@ -35,16 +56,9 @@ public class Orders {
 		this.delivery = delivery;
 	}
 
-	@Column(name = "Total_Quantity")
-     int totalQuantity;
-    
-    @ManyToOne
-    @JoinColumn(name="U_id")
-    public User user;
-    
-    
-    
-    public User getUser() {
+	
+	
+	public User getUser() {
 		return user;
 	}
 
@@ -59,18 +73,8 @@ public class Orders {
 	public void setOrderItems(OrderItems orderItems) {
 		this.orderItems = orderItems;
 	}
+	
 
-	@OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "OI_id")
-    public OrderItems orderItems;
-    
-   
-    @OneToOne(mappedBy = "orders", cascade = CascadeType.ALL)
-    public Payment payment;
-   
-    @OneToOne(mappedBy = "orders", cascade = CascadeType.ALL)
-    public Delivery delivery;
-    
 	public Payment getPayment() {
 		return payment;
 	}
@@ -104,4 +108,3 @@ public class Orders {
 	}
 
 }
-

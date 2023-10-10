@@ -2,6 +2,7 @@ package com.Food.entities;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -13,43 +14,39 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+
 @Entity
 @Table(name = "TableBooking")
 public class TableBooking {
-	
+
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Booking_id")
-     int bookingId;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "Booking_id")
+	int bookingId;
 
-    
+	@Column(name = "No_of_seats")
+	int numberOfSeats;
 
-    @Column(name = "No_of_seats")
-     int numberOfSeats;
+	@Column(name = "Remaining_seats")
+	int remainingSeats;
+	@Temporal(TemporalType.DATE)
+	@Column(name = "Booking_date")
+	Date bookingDate;
+	@Column(name = "Paid_Amount")
+	int paidAmount;
+	
+	@ManyToOne
+	@JsonIgnore
+	@JoinColumn(name = "U_id")
+	public User user;
 
-    @Column(name = "Remaining_seats")
-     int remainingSeats;
-    @Temporal(TemporalType.DATE)
-    @Column(name = "Booking_date")
-     Date bookingDate;
-    @Column(name = "Paid_Amount")
-     int paidAmount;
-
-    @ManyToOne
-    @JoinColumn(name="U_id")
-    public User user;
-    
-    public int getBookingId() {
+	public int getBookingId() {
 		return bookingId;
 	}
-
-	
 
 	public void setBookingId(int bookingId) {
 		this.bookingId = bookingId;
 	}
-
-	
 
 	public int getNumberOfSeats() {
 		return numberOfSeats;
@@ -83,13 +80,6 @@ public class TableBooking {
 		this.paidAmount = paidAmount;
 	}
 
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
+	
 
 }
