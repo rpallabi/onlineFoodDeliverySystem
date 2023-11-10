@@ -1,13 +1,19 @@
 package com.Restaurant.controller;
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 60499dd77ba5844fee6689b4f15e9717ac03f07b
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+<<<<<<< HEAD
 import org.springframework.web.bind.annotation.CrossOrigin;
+=======
+>>>>>>> 60499dd77ba5844fee6689b4f15e9717ac03f07b
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,9 +23,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.Restaurant.entities.User;
+<<<<<<< HEAD
 //import com.Restaurant.repository.UserRepository;
 import com.Restaurant.service.UserService;
 @CrossOrigin(origins = "http://localhost:4200")
+=======
+import com.Restaurant.service.UserService;
+
+
+>>>>>>> 60499dd77ba5844fee6689b4f15e9717ac03f07b
 @RestController
 public class UserController {
 	//private Map<String, User> users = new HashMap<>();

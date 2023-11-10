@@ -1,11 +1,18 @@
 package com.Restaurant.entities;
 
+<<<<<<< HEAD
 
 
 import java.util.Date;
+=======
+>>>>>>> 60499dd77ba5844fee6689b4f15e9717ac03f07b
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
+<<<<<<< HEAD
+=======
+import java.util.Date;
+
+>>>>>>> 60499dd77ba5844fee6689b4f15e9717ac03f07b
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -35,12 +42,18 @@ public class Payment {
 	@Column(name = "Pay_method", nullable = false, length = 50)
 	String paymentMethod;
 	
+<<<<<<< HEAD
 	@JsonIgnore
+=======
+>>>>>>> 60499dd77ba5844fee6689b4f15e9717ac03f07b
 	@OneToOne(cascade=CascadeType.ALL)
 	  @JoinColumn(name="O_id")
 	  public Orders orders;
 	
+<<<<<<< HEAD
 	@JsonIgnore
+=======
+>>>>>>> 60499dd77ba5844fee6689b4f15e9717ac03f07b
 	@ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "U_id", referencedColumnName = "U_id")
 	public User user;

@@ -5,14 +5,14 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.1.5</version>
+		<version>3.1.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.Restaurant</groupId>
-	<artifactId>FoodDelivery_project</artifactId>
+	<groupId>com.Food</groupId>
+	<artifactId>Online_Food_Delivery_Sys</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>FoodDelivery_project</name>
-	<description>Online Food Delivery Project System</description>
+	<name>Online_Food_Delivery_Sys</name>
+	<description>Online Food Delivery system</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
@@ -24,6 +24,10 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web-services</artifactId>
 		</dependency>
 
 		<dependency>
@@ -42,7 +46,8 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations -->
+<dependency>
     <groupId>com.fasterxml.jackson.core</groupId>
     <artifactId>jackson-annotations</artifactId>
     
@@ -52,12 +57,9 @@
     <artifactId>jackson-databind</artifactId>
    
 </dependency>
-<<<<<<< HEAD
 
-</dependencies>
-=======
+
 	</dependencies>
->>>>>>> 60499dd77ba5844fee6689b4f15e9717ac03f07b
 
 	<build>
 		<plugins>

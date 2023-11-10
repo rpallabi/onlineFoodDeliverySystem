@@ -21,6 +21,10 @@ import org.springframework.web.multipart.MultipartFile;
 import com.Restaurant.entities.Food;
 import com.Restaurant.service.Foodservice;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 60499dd77ba5844fee6689b4f15e9717ac03f07b
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -28,6 +32,10 @@ public class FoodController {
 	@Autowired
 	private Foodservice foodService;
 	public static String uploadDirectory = System.getProperty("user.dir") + "/src/main/webapp/images";
+<<<<<<< HEAD
+=======
+
+>>>>>>> 60499dd77ba5844fee6689b4f15e9717ac03f07b
 	@PostMapping("/saveFood")
 	public Food saveFood(@ModelAttribute Food food, @RequestParam("image") MultipartFile file) throws IOException {
 		String originalFilename = file.getOriginalFilename();

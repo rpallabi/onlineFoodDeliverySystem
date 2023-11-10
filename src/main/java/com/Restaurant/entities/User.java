@@ -5,7 +5,6 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -41,12 +40,19 @@ public class User {
 
 	@Column(name = "U_type", nullable = false, length = 50)
 	String userType;
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> 60499dd77ba5844fee6689b4f15e9717ac03f07b
 	@JsonIgnore
 	@OneToMany(mappedBy = "admin")
 	List<Food> foods;
 	
+<<<<<<< HEAD
 	@JsonIgnore
+=======
+>>>>>>> 60499dd77ba5844fee6689b4f15e9717ac03f07b
 	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
  	public Delivery delivery;
 	

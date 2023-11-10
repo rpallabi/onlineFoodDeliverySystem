@@ -2,8 +2,11 @@ package com.Restaurant.entities;
 
 import java.sql.Date;
 
+<<<<<<< HEAD
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+=======
+>>>>>>> 60499dd77ba5844fee6689b4f15e9717ac03f07b
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -34,12 +37,18 @@ public class Delivery {
 	@Column(name = "No_of_items", nullable = false)
 	int numberOfItems;
 	
+<<<<<<< HEAD
 	@JsonIgnore
+=======
+>>>>>>> 60499dd77ba5844fee6689b4f15e9717ac03f07b
 	@OneToOne(cascade=CascadeType.ALL)
 	  @JoinColumn(name="O_id")
 	  public Orders orders;
 	
+<<<<<<< HEAD
 	@JsonIgnore
+=======
+>>>>>>> 60499dd77ba5844fee6689b4f15e9717ac03f07b
 	@OneToOne(cascade=CascadeType.ALL)
 	  @JoinColumn(name="U_id")
 	  public User user;

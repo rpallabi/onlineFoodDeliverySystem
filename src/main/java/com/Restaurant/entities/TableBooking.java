@@ -2,8 +2,11 @@ package com.Restaurant.entities;
 
 import java.util.Date;
 
+<<<<<<< HEAD
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+=======
+>>>>>>> 60499dd77ba5844fee6689b4f15e9717ac03f07b
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -36,7 +39,10 @@ public class TableBooking {
 	@Column(name = "Paid_Amount")
 	int paidAmount;
 	
+<<<<<<< HEAD
 	@JsonIgnore
+=======
+>>>>>>> 60499dd77ba5844fee6689b4f15e9717ac03f07b
 	@ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "U_id", referencedColumnName = "U_id")
 	public User user;

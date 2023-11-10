@@ -52,12 +52,8 @@
     <artifactId>jackson-databind</artifactId>
    
 </dependency>
-<<<<<<< HEAD
 
 </dependencies>
-=======
-	</dependencies>
->>>>>>> 60499dd77ba5844fee6689b4f15e9717ac03f07b
 
 	<build>
 		<plugins>

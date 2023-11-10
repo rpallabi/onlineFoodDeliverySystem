@@ -1,10 +1,14 @@
 package com.Restaurant.entities;
 import java.util.HashSet;
 import java.util.Set;
+<<<<<<< HEAD
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
+=======
+import com.fasterxml.jackson.annotation.JsonIgnore;
+>>>>>>> 60499dd77ba5844fee6689b4f15e9717ac03f07b
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -34,11 +38,18 @@ public class Food {
 	 int price;
 
 	@Column(name = "F_Quantity", nullable = false)
+<<<<<<< HEAD
 	 int quantity;
 
 	@Column(name = "Image")
 	 String FoodImage;
 	
+=======
+	 Integer quantity;
+
+	@Column(name = "Image")
+	 String FoodImage;
+>>>>>>> 60499dd77ba5844fee6689b4f15e9717ac03f07b
 	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "Admin_id")

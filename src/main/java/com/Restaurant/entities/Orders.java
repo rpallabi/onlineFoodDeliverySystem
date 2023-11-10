@@ -1,6 +1,9 @@
 package com.Restaurant.entities;
+<<<<<<< HEAD
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+=======
+>>>>>>> 60499dd77ba5844fee6689b4f15e9717ac03f07b
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -25,22 +28,35 @@ public class Orders {
 	@Column(name = "Total_Quantity")
 	int totalQuantity;
 	
+<<<<<<< HEAD
 	@JsonIgnore
+=======
+>>>>>>> 60499dd77ba5844fee6689b4f15e9717ac03f07b
 	@OneToOne(cascade=CascadeType.ALL)
 	  @JoinColumn(name="OI_id")
 	  public OrderItems orderitems;
 	
+<<<<<<< HEAD
 	@JsonIgnore
+=======
+>>>>>>> 60499dd77ba5844fee6689b4f15e9717ac03f07b
 	@ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "U_id", referencedColumnName = "U_id")
 	public User user;
 	
+<<<<<<< HEAD
 	@JsonIgnore
 	@OneToOne(mappedBy = "orders", cascade = CascadeType.ALL)
  	public Payment payment;
 	
 	@JsonIgnore
 	@OneToOne(mappedBy = "orders", cascade = CascadeType.ALL)
+=======
+	@OneToOne(mappedBy = "orders", cascade = CascadeType.ALL)
+ 	public Payment payment;
+	
+	@OneToOne(mappedBy = "orders", cascade = CascadeType.ALL)
+>>>>>>> 60499dd77ba5844fee6689b4f15e9717ac03f07b
  	public Delivery delivery;
 	
 	public int getOrderId() {
